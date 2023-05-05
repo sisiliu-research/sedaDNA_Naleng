@@ -33,7 +33,7 @@ Tools: [HOPS-malt](https://github.com/rhuebler/HOPS) and [MEGAN software](https:
 - top alignments = 100 (unique accession hits)
 - min score = 50
 - max expected (e-value) = 1
-- minimal percent identity = 90, 
+- minimal percent identity = 90 
 - m = BlastN (model for nucleotide)
 - lowest common ancestor (LCA) = naïve
 - top percent = 1 (taking 1% of the top hits into consideration for LCA assignment) 
