@@ -81,7 +81,7 @@ srun hops -Xmx60G -input ${INPUT}/${INMEGANRMA} -output ${EXOUT}/${FILE_BASE} -m
 0. Redundancy Analysis (RDA) and variance partitioning analysis for terrestrial communities: 05_MEGAN_id95_rda_venn_terrestrial.R
 1. Redundancy Analysis (RDA) and variance partitioning analysis for aquatic communities: 06_MEGAN_id95_rda_venn_aquatic.R
 
-## Network analysis (Fig. 2 L and Fig. G)
+## Network analysis (Fig. 2 L and Fig. 3 G)
 Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). It is detailed explained by [Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
 
 0. network analysis for terrestrial ecosystem: 07_MEGAN_id95_network_terrestrial.R
