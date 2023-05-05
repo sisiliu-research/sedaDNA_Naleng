@@ -1,8 +1,9 @@
 # sedaDNA analysis of Lake Naleng
-The source codes for bioinformatic, ordination and network analysis on shotgun sequencing/metagenomic data classified by Megan alignment tool.
+This repository contains source codes used to analysis shotgun sequencing/metagenomic data of Liu et al., 2023. [Tibetan terrestrial and aquatic ecosystems collapsed with cryosphere loss inferred from sedimentary ancient metagenomics] 
+
+The script for bioinformatics is done by Lars Harms (lars.harms@awi.de) and modified by Sisi Liu (sisi.liu@awi.de/sisi.liu.research@gmail.com). Other scripts are done by Sisi Liu.
 
 ## Bioinformatic analysis
-Done by Lars Harms (lars.harms@awi.de) and Modified by Sisi Liu (sisi.liu@awi.de)
 
 0. Slrum option setting: [Slrum manual](https://slurm.schedmd.com/sbatch.html)
 
