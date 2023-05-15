@@ -61,7 +61,7 @@ Tool is [HOPS-MaltExtract](https://github.com/rhuebler/MaltExtract). It is detai
 ```
 srun hops -Xmx60G -input ${INPUT}/${INMEGANRMA} -output ${EXOUT}/${FILE_BASE} -m me_po -c ${CONFIG};
 ```
-Eight main taxa with sufficient read counts are authenticated. They represent terrestrial mammals (Bos mutus), terrestrial plants (Saxifraga sinomontana, Asteroideae, Asteraceae, Salix, and Saliceae), aquatic plants (Potamogeton perfoliatus), and aquatic microbes (N. limnetica). The rates of C>T substitutions are assessed to determine whether an age-dependent signal is present by integrating the deamination results of these taxa showed the damage patterns across most time slides spanning 17 to 3 ka. The related r-script is 01_MEGAN_id95_aDNA_damage.R.
+Eight main taxa with sufficient read counts are authenticated. They represent terrestrial mammals (Bos mutus), terrestrial plants (Saxifraga sinomontana, Asteroideae, Asteraceae, Salix, and Saliceae), aquatic plants (Potamogeton perfoliatus), and aquatic microbes (N. limnetica). The rates of C>T substitutions are assessed to determine whether the age-dependent signal and climate-dependent are present by integrating the deamination results of these taxa showed the damage patterns across most time slides spanning 17 to 3 ka. The related r-script is 01_MEGAN_id95_aDNA_damage.R.
 
 ## Compositional analysis (Fig. 2 A-E and Fig. 3 A-D)
 0. After data cleaning and filtering, two terrestrial datasets (plants and mammals) and one aquatic dataset are rarefied by considering the taxa coverage. Then, the common taxa (have the maximum relative rarefied abundance >= 1% and occur in 5 samples at least) are selected for ordination and network analysis. The r-script is: 02_MEGAN_id95_rarefied.R.
