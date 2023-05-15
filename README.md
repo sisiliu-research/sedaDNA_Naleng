@@ -61,23 +61,19 @@ Tool is [HOPS-MaltExtract](https://github.com/rhuebler/MaltExtract). It is detai
 ```
 srun hops -Xmx60G -input ${INPUT}/${INMEGANRMA} -output ${EXOUT}/${FILE_BASE} -m me_po -c ${CONFIG};
 ```
-Eight main taxa with sufficient read counts are authenticated. They represent terrestrial mammals (Bos mutus), terrestrial plants (Saxifraga sinomontana, Asteroideae, Asteraceae, Salix, and Saliceae), aquatic plants (Potamogeton perfoliatus), and aquatic microbes (N. limnetica). The rates of C>T substitutions are assessed to determine whether an age-dependent signal is present by integrating the deamination results of these taxa showed the damage patterns across most time slides spanning 17 to 3 ka. The related r-script is 01_MEGAN_id95_aDNA_damage.R
-
-
-
-
+Eight main taxa with sufficient read counts are authenticated. They represent terrestrial mammals (Bos mutus), terrestrial plants (Saxifraga sinomontana, Asteroideae, Asteraceae, Salix, and Saliceae), aquatic plants (Potamogeton perfoliatus), and aquatic microbes (N. limnetica). The rates of C>T substitutions are assessed to determine whether an age-dependent signal is present by integrating the deamination results of these taxa showed the damage patterns across most time slides spanning 17 to 3 ka. The related r-script is 01_MEGAN_id95_aDNA_damage.R.
 
 ## Compositional analysis (Fig. 2 A-E and Fig. 3 A-D)
-0. After data cleaning and filtering, two terrestrial datasets (plants and mammals) are rarefied using r-script: 03_MEGAN_id95_rarefied_terrestrial.R
-1. After data cleaning and filtering, one aquatic dataset is rarefied using r-script: 04_MEGAN_id95_rarefied_aquatic.R
-2. Select the common taxa (have the maximum relative rarefied abundance >= 1% and occur in 5 samples at least) for ordination and network analysis.
+0. After data cleaning and filtering, two terrestrial datasets (plants and mammals) and one aquatic dataset are rarefied by considering the taxa coverage. Then, the common taxa (have the maximum relative rarefied abundance >= 1% and occur in 5 samples at least) are selected for ordination and network analysis. The r-script is: 02_MEGAN_id95_rarefied.R.
+
 
 ## Ordination analysis (Fig. 2 K and Fig. 3 E-F)
-0. Redundancy Analysis (RDA) and variance partitioning analysis for terrestrial communities: 05_MEGAN_id95_rda_venn_terrestrial.R
-1. Redundancy Analysis (RDA) and variance partitioning analysis for aquatic communities: 06_MEGAN_id95_rda_venn_aquatic.R
+0. Redundancy Analysis (RDA) and variance partitioning analysis for terrestrial vegetation: 03_MEGAN_id95_rda_venn_terrestrialPlants.R
+1. Redundancy Analysis (RDA) and variance partitioning analysis for terrestrial mammalian: 04_MEGAN_id95_rda_venn_terrestrialMamm.R
+2. Redundancy Analysis (RDA) and variance partitioning analysis for aquatic communities: 05_MEGAN_id95_rda_venn_aquatic.R
 
 ## Network analysis (Fig. 2 L and Fig. 3 G)
 Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). It is detailed explained by [Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
 
-0. network analysis for terrestrial ecosystem: 07_MEGAN_id95_network_terrestrial.R
-1. network analysis for aquatic ecosystem: 08_MEGAN_id95_network_aquatic.R
+0. network analysis for terrestrial ecosystem: 06_MEGAN_id95_network_terrestrial.R
+1. network analysis for aquatic ecosystem: 07_MEGAN_id95_network_aquatic.R
