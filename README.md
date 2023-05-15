@@ -55,27 +55,17 @@ srun hops -Xmx800G -input ${INPUT}/${INRMA} -output ${EXOUT}/${FILE_BASE} -m mal
 
 Other parameters are not modified.
 
-## Taxonomic data cleaning and filtering
-0. Extract datasets using [MEGAN software](https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/algorithms-in-bioinformatics/software/megan6/)
-- taxonName_to_count 
-- taxonId_to_count 
-- taxonRank_to_count
-- taxonPath_to_count
-
-1. Merged these four datasets and clean them up using r-script: 01_MEGAN_id95_clean.R 
-
-2. Filter the cleaned data with the compiled taxa lists: 02_MEGAN_id95_filter.R
-- [Global Biodiversity Information Facility](https://www.gbif.org/)
-- [Flora of China](http://www.efloras.org/flora_page.aspx?flora_id=2)
-- [Biodiversity the Hengduan Mountains and adjacent areas of south-central China](http://hengduan.huh.harvard.edu/fieldnotes)
-- Publications: [Yu et al., 2018](https://onlinelibrary.wiley.com/doi/10.1111/ddi.12847) and [Yu et al., 2020](https://www.frontiersin.org/articles/10.3389/fevo.2020.00136/full)
-
-## Ancient DNA (aDNA) damage pattern analysis (Fig. S3)
+## Ancient DNA (aDNA) damage pattern analysis (Fig. S3 and Fig. S4)
 Tool is [HOPS-MaltExtract](https://github.com/rhuebler/MaltExtract). It is detailed explained by [Hübler et al., 2019](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1903-0)
 
 ```
 srun hops -Xmx60G -input ${INPUT}/${INMEGANRMA} -output ${EXOUT}/${FILE_BASE} -m me_po -c ${CONFIG};
 ```
+Eight main taxa with sufficient read counts are authenticated. They represent terrestrial mammals (Bos mutus), terrestrial plants (Saxifraga sinomontana, Asteroideae, Asteraceae, Salix, and Saliceae), aquatic plants (Potamogeton perfoliatus), and aquatic microbes (N. limnetica). The rates of C>T substitutions are assessed to determine whether an age-dependent signal is present by integrating the deamination results of these taxa showed the damage patterns across most time slides spanning 17 to 3 ka. The related r-script is 01_MEGAN_id95_aDNA_damage.R
+
+
+
+
 
 ## Compositional analysis (Fig. 2 A-E and Fig. 3 A-D)
 0. After data cleaning and filtering, two terrestrial datasets (plants and mammals) are rarefied using r-script: 03_MEGAN_id95_rarefied_terrestrial.R
