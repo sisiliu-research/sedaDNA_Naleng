@@ -41,7 +41,7 @@ merged_dem_aea=projectRaster(merged_dem_crop, crs = CRS(SRS_string = "ESRI:10202
 bio1_sp_aea_30m=resample(bio1_sp_aea, merged_dem_aea, method='bilinear')
 permafrost_map_30m=resample(permafrost_map, merged_dem_aea, method='bilinear')
 
-#== save/the three raster files are provided under raster/
+#== save
 writeRaster(bio1_sp_aea_30m, filename = "bio1_dem_aea_WGS84.tif", overwrite = TRUE)
 writeRaster(merged_dem_aea, filename = "hengduan_dem_aea_WGS84.tif", overwrite = TRUE)
 writeRaster(permafrost_map_30m, filename = "permafrost_dem_aea_WGS84.tif", overwrite = TRUE)
