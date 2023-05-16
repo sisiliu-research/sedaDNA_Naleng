@@ -80,7 +80,7 @@ Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). It is detailed explain
 
 ## Past permafrost simulation (Fig. 1 B and Fig. S1)
 0. Download the source data: [palaeo proxies-based temperature](https://github.com/StefanKruse/R_PastElevationChange), [BIO1](https://www.worldclim.org/data/worldclim21.html), [present-day permafrost distribution in the Tibetan Plateau](https://tc.copernicus.org/articles/11/2527/2017/), and [SRTM 30 m digital elevation data with SRTM-Downloader plugin in the QGIS software](https://qgis.org/de/site/). 
-1. [Merging SRTM raster files in the QGIS software](https://support.dronesmadeeasy.com/hc/en-us/articles/115003641246-QGIS-Raster-Merging)  
+1. Merging SRTM raster files in the QGIS software: Raster > Miscellaneous > Merge
 2. Prepare the raster files for permafrost simulation using r-script: [08_prepare_raster_files.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/R/08_prepare_raster_files.R).
 3. Permafrost simulation using r-script: [09_permafrost_predict.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/R/09_permafrost_predict.R)
 
