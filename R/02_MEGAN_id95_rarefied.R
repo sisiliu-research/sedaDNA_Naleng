@@ -19,7 +19,7 @@ ngs="APMG-5-10-28-34-35"
 ecogroup="TerrestrialPlants"
 
 #== load
-indf=read.csv(paste0("step03_assigned/05_dup/outTables/", ngs,"-idc95-cellRanks-c2-clean-freq2-family-Viridiplantae-FaGeSpOthInTP-land.csv"), row.names = 1)
+indf=read.csv(paste0("step03_assigned/outTables/", ngs,"-idc95-cellRanks-c2-clean-freq2-family-Viridiplantae-FaGeSpOthInTP-land.csv"), row.names = 1)
 length(unique(indf[indf$rank == "Species", "taxon"])) #96
 length(unique(indf[indf$rank == "Genus", "taxon"])) #118
 length(unique(indf[indf$rank == "Family", "taxon"])) #68
