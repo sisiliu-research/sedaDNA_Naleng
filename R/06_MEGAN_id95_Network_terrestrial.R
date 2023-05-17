@@ -246,7 +246,7 @@ keystone_sp=taxacluster[taxacluster$hs_cluster >= 0.8, ]
 write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone-res", resi, ".csv"))
 
 #== for each ecogroup
-raw_igraph=read.csv(paste0("step03_assigned/outTables/selAPMG-5-10-28-34-35-hops-FaGeSpOthInTP-taxa-to-ecogroup.csv"), row.names = 1)
+raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-taxa-to-ecogroup.csv"), row.names = 1)
 raw_igraph=raw_igraph[raw_igraph$ecogroup %in% c("Terrestrial_Plants", "Terrestrial_Mammals"), ]
 raw_igraph=raw_igraph[c("taxa", "ecogroup")]
 names(raw_igraph)=c("nodes", "group")
