@@ -346,10 +346,12 @@ p4=ggplot(tempdf_long, aes(x = age, y = value)) +
         axis.text = element_text(color = "black", size = 8),
         axis.title = element_text(color = "black", size = 8))
 p4
+
+#== save
 pdf(file = paste0("step03_assigned/01_damage/outFigures/CT_cor_Time.pdf"), width = 5, height = 10)
 print(ggarrange(p1, p2, p3, p4, nrow = 4, align = "v"))
 dev.off()
-
+#== end ==
 
 
 
