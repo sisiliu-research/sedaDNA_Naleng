@@ -235,14 +235,14 @@ for (i in 1:max(cluster$memberships)) {
 }
 #== save
 taxacluster=taxacluster[order(-taxacluster$`cluster_sub$memberships`, -taxacluster$hs_cluster), ]
-write.csv(metacluster, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-metacluster-res", resi, "-deg.csv"))
-write.csv(taxacluster, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-taxacluster-res", resi, "-deg.csv"))
+write.csv(metacluster, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-filter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-metacluster-res", resi, "-deg.csv"))
+write.csv(taxacluster, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-filter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-taxacluster-res", resi, "-deg.csv"))
 # keystone species
 keystone_sp=taxacluster[taxacluster$hs_cluster >= 0.8, ]
-write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone-res", resi, ".csv"))
+write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-filter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone-res", resi, ".csv"))
 
 #== for each ecogroup
-raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
+raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-filter-TP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 raw_igraph=raw_igraph[raw_igraph$ecogroup %in% c("Terrestrial_Plants", "Terrestrial_Mammals"), ]
 raw_igraph=raw_igraph[c("taxa", "ecogroup")]
 names(raw_igraph)=c("nodes", "group")
@@ -304,7 +304,7 @@ library(circlize)
 library(igraph)
 
 # ecogroup
-ecogroup=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
+ecogroup=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-filter-TP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 # plants
 df1=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-TerrestrialPlants-N100_3000-p1f5.csv"), row.names = 1)
 df2=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-TerrestrialMamm-N100_150-p1f5.csv"), row.names = 1)
