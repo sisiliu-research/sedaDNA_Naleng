@@ -71,7 +71,7 @@ sp=cbind(sp_01.want, sp_03.want)
 # uniform age
 rownames(sp)=envi_df$age
 
-#== out setting of option
+#== setting of option
 occurrence="rp1_f5_assigned_p3000_m150"
 mi="age_cry"
 
@@ -79,6 +79,7 @@ mi="age_cry"
 df_Y=round(sp, digits = 0)
 df_m=envi_df
 sp_mvabund=mvabund(df_Y)
+
 options(scipen=999)
 pdf(file = paste0("step03_assigned/04_network/outFigures_land/mod1-meanvar_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 5, height = 5)
 meanvar.plot(sp_mvabund, table = T, las = 1, cex.axis = .5)
@@ -91,12 +92,7 @@ mod1 <- manyglm(sp_mvabund ~ envi_df$age + envi_df$Permafrost_catchment_approx +
 pdf(file = paste0("step03_assigned/04_network/outFigures_land/", "mod1-residual_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 6, height = 5)
 plot(mod1)
 dev.off()
-pdf(file = paste0("step03_assigned/04_network/outFigures_land/", "mod1-Q-Q_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 6, height = 5)
-plot(mod1, which = 2)
-dev.off()
-pdf(file = paste0("step03_assigned/04_network/outFigures_land/", "mod1-scale-location_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 6, height = 5)
-plot(mod1, which = 3)
-dev.off()
+
 # anova
 mod1.anova=anova(mod1, p.uni="adjusted")
 mod1.table=mod1.anova[["table"]]
@@ -246,7 +242,7 @@ keystone_sp=taxacluster[taxacluster$hs_cluster >= 0.8, ]
 write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_land/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone-res", resi, ".csv"))
 
 #== for each ecogroup
-raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-taxa-to-ecogroup.csv"), row.names = 1)
+raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 raw_igraph=raw_igraph[raw_igraph$ecogroup %in% c("Terrestrial_Plants", "Terrestrial_Mammals"), ]
 raw_igraph=raw_igraph[c("taxa", "ecogroup")]
 names(raw_igraph)=c("nodes", "group")
@@ -308,10 +304,10 @@ library(circlize)
 library(igraph)
 
 # ecogroup
-ecogroup=read.csv("step03_assigned/05_dup/outTables/selAPMG-5-10-28-34-35-hops-FaGeSpOthInTP-taxa-to-ecogroup.csv", row.names = 1)
+ecogroup=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 # plants
-df1=read.csv("step03_assigned/05_dup/02_rarefy/outTables/APMG-5-10-28-34-35-TerrestrialPlants-N100_3000-p1f5.csv", row.names = 1)
-df2=read.csv("step03_assigned/05_dup/02_rarefy/outTables/APMG-5-10-28-34-35-TerrestrialMamm-N100_150-p1f5.csv", row.names = 1)
+df1=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-TerrestrialPlants-N100_3000-p1f5.csv"), row.names = 1)
+df2=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-TerrestrialMamm-N100_150-p1f5.csv"), row.names = 1)
 
 # nodes in netwrok
 nodes=data.frame(taxa=c(names(df1), names(df2)))
@@ -336,7 +332,7 @@ sisi_color=c(rgb(242, 159, 64, maxColorValue = 255), # forbs
              rgb(242, 220, 178, maxColorValue = 255))
 
 #== load data: Line 281 
-within=read.csv("step03_assigned/05_dup/04_network/outTables_land/APMG-5-10-28-34-35-TerrestrialNetwork-hops-fiter-TP-modelage_cry-occ-rp1_f5_assigned_p3000_m150-sumC-samp1500-within-res0.38.csv", row.names = 1)
+within=read.csv(past0("step03_assigned/04_network/outTables_land/", ngs, "-TerrestrialNetwork-hops-fiter-TP-modelage_cry-occ-rp1_f5_assigned_p3000_m150-sumC-samp1500-within-res0.38.csv"), row.names = 1)
 
 #== show module 1 and 2
 chord=within[within$from_to_module=="1-1", c("from_nodes", "to_nodes", "weight")]
