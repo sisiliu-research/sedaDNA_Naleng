@@ -22,8 +22,8 @@ library(ggplot2)
 # envi data
 envi=read.csv(paste0("step03_assigned/03_rda/", econame,"_envi.csv"))
 names(envi)
-envi=envi[c("temperature", "glacier_mass", "kramer2010")]
-human.sqrt2=sqrt(sqrt(envi["kramer2010"]))
+envi=envi[c("temperature", "glacier_mass", "land_use")]
+human.sqrt2=sqrt(sqrt(envi["land_use"]))
 envi=cbind(envi[1:2], human.sqrt2)
 # sp data
 spe=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs,"-AquaticGroups-N100_2000-p1f5.csv"), row.names = 1, check.names = F)
@@ -61,8 +61,8 @@ vif_df=vif.cca(envi.cca)
 write.csv(vif_df, paste0("step03_assigned/03_rda/outTables/vif-", ngs,"-", econame, "-", ecogroup, "-r2.csv"))
 
 #== rda using envi factors with vif < 3
-envi.sig=envi[, c("glacier_mass", "kramer2010")]
-nams <- list("glacier_mass", "kramer2010")
+envi.sig=envi[, c("glacier_mass", "land_use")]
+nams <- list("glacier_mass", "land_use")
 # Single variance
 meta.single.var=NULL
 for (i in 1:length(nams)) {
