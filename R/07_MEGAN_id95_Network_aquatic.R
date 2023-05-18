@@ -62,7 +62,7 @@ sp=sp_01[, colnames(sp_01) %in% colnames(sp_02.want)]
 # age
 rownames(sp)=envi_df$age
 
-#== out data setting
+#== output setting
 occurrence="rp1_f5_assigned_rare2000"
 mi="age_mass"
 
@@ -70,6 +70,7 @@ mi="age_mass"
 df_Y=round(sp, digits = 0)
 df_m=envi_df
 sp_mvabund=mvabund(df_Y)
+
 options(scipen=999)
 pdf(file = paste0("step03_assigned/04_network/outFigures_aquatic/mod1-meanvar_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 5, height = 5)
 meanvar.plot(sp_mvabund, table = T, las = 1, cex.axis = .5)
@@ -80,12 +81,6 @@ mod1 <- manyglm(sp_mvabund ~ envi_df$age + envi_df$glacier_mass, family="negativ
 # plots
 pdf(file = paste0("step03_assigned/04_network/outFigures_aquatic/", "mod1-residual_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 6, height = 5)
 plot(mod1)
-dev.off()
-pdf(file = paste0("step03_assigned/04_network/outFigures_aquatic/", "mod1-Q-Q_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 6, height = 5)
-plot(mod1, which = 2)
-dev.off()
-pdf(file = paste0("step03_assigned/04_network/outFigures_aquatic/", "mod1-scale-location_", ngs, "-", econame, "_", occurrence, ".pdf"), width = 6, height = 5)
-plot(mod1, which = 3)
 dev.off()
 # anova
 mod1.anova=anova(mod1, p.uni="adjusted")
@@ -232,13 +227,14 @@ write.csv(taxacluster, paste0("step03_assigned/04_network/outTables_aquatic/", n
 # keystone species
 keystone_sp=taxacluster[taxacluster$hs_cluster >= 0.8, ]
 write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone3-res", resi, ".csv"))
+
+#== cluster and igraph
 # for each eco group
-raw_igraph=read.csv("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-taxa-to-ecogroup.csv", row.names = 1)
+raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 raw_igraph=raw_igraph[!(raw_igraph$ecogroup %in% c("Terrestrial_Plants", "Terrestrial_Mammals")), ]
 raw_igraph=raw_igraph[c("taxa", "ecogroup")]
 names(raw_igraph)=c("nodes", "group")
-
-#== cluster and igraph
+#
 module=cluster
 igraph=raw_igraph
 module_class=left_join(module, igraph, by = "nodes")
@@ -293,21 +289,18 @@ write.csv(finaltable, paste0("step03_assigned/04_network/outTables_aquatic/", ng
 
 #== plotting modules in Fig. 3G
 # ecogroup
-ecogroup=read.csv("step03_assigned/05_dup/outTables/selAPMG-5-10-28-34-35-hops-FaGeSpOthInTP-taxa-to-ecogroup.csv", row.names = 1)
+ecogroup=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 # data
-df1=read.csv("step03_assigned/05_dup/02_rarefy/outTables/APMG-5-10-28-34-35-AquaticGroups-N100_2000-p1f5.csv", row.names = 1)
+df1=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-AquaticGroups-N100_2000-p1f5.csv"), row.names = 1)
 library(circlize)
 library(igraph)
-# 
-# 
-df1=read.csv("step03_assigned/05_dup/02_rarefy/outTables/APMG-5-10-28-34-35-AquaticGroups-N100_2000-p1f5.csv", row.names = 1)
 # attach group
 df1=as.data.frame(t(df1))
 df1$taxa=rownames(df1)
 df1=left_join(df1, ecogroup, by = "taxa")
 df1$sum=rowSums(df1[1:40])
 #
-# pre14 ka and post-14 ka 
+# pre14 ka and post-14 ka, only for select colour
 df1$pre14=rowSums(df1[, 1:10])/10
 df1$post14=rowSums(df1[, 11:40])/30
 df1$pre14_post14=df1$pre14-df1$post14
@@ -317,7 +310,7 @@ pre_tx=pre_tx[-5]
 post_tx=df1[df1$pre14_post14<0 & df1$ecogroup == "Aquatic_Bacteria", "taxa"]
 post_tx
 #
-within=read.csv("step03_assigned/05_dup/04_network/outTables_aquatic/APMG-5-10-28-34-35-aquaticNetwork-hops-fiter-TP-modelage_mass-occ-rp1_f5_assigned_rare2000-sumC-samp1500-within3-res0.62.csv", row.names = 1)
+within=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-aquaticNetwork-hops-fiter-TP-modelage_mass-occ-rp1_f5_assigned_rare2000-sumC-samp1500-within3-res0.62.csv"), row.names = 1)
 #== moduels 1, 2, and 3
 mi="1-1"
 chord=within[within$from_to_module==mi, c("from_nodes", "to_nodes", "weight")]
@@ -377,8 +370,7 @@ if (TRUE) {
                                                    ifelse(chord_igraph$group == "01_Cyanobacteria", sisi_color[6],
                                                           ifelse(chord_igraph$group == "03_Cyanobacteria", sisi_color[6], sisi_color[5]))))))
   }
-    
-
+  # color id
   glacier_color=chord_igraph$color
   names(glacier_color)=chord_igraph$ID
   text.order=chord_igraph$ID
