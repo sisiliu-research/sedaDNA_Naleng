@@ -21,8 +21,8 @@ library(ggplot2)
 # envi data
 envi=read.csv(paste0("step03_assigned/03_rda/", econame,"_envi.csv"))
 names(envi)
-envi=envi[c("temperature", "glaciers_area_approx", "Permafrost_catchment_approx", "PC1", "kramer2010")]
-human.sqrt2=sqrt(sqrt(envi["kramer2010"]))
+envi=envi[c("temperature", "glaciers_area_approx", "Permafrost_catchment_approx", "PC1", "land_use")]
+human.sqrt2=sqrt(sqrt(envi["land_use"]))
 envi=cbind(envi[1:4], human.sqrt2)
 # mammalian
 spe=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-TerrestrialMamm-N100_150-p1f5.csv"), row.names = 1)
@@ -65,8 +65,8 @@ vif_df=vif.cca(envi.cca)
 write.csv(vif_df, paste0("step03_assigned/03_rda/outTables/vif-",  ngs, "-", econame, "-", ecogroup, "-r3.csv"))
 
 #== rda using envi factors with vif < 3
-envi.sig=envi[, c("glaciers_area_approx", "Permafrost_catchment_approx", "kramer2010")]
-nams <- list(c("glaciers_area_approx", "Permafrost_catchment_approx"), "kramer2010")
+envi.sig=envi[, c("glaciers_area_approx", "Permafrost_catchment_approx", "land_use")]
+nams <- list(c("glaciers_area_approx", "Permafrost_catchment_approx"), "land_use")
 
 # Single variance
 meta.single.var=NULL
