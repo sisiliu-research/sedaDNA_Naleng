@@ -16,14 +16,19 @@ dir.create("step03_assigned/02_rarefy/outFigures")
 
 #== setting
 ngs="APMG-5-10-28-34-35"
-ecogroup="TerrestrialPlants"
+ecogroup="TerrestrialPlants" # same procedures for other ecogroup
 
 #== load
 indf=read.csv(paste0("step03_assigned/outTables/", ngs,"-idc95-cellRanks-c2-clean-freq2-family-Viridiplantae-FaGeSpOthInTP-land.csv"), row.names = 1)
+#indf=read.csv(paste0("step03_assigned/outTables/", ngs, "-idc95-cellRanks-c2-clean-freq2-family-MammaliaExHominidae-FaGeSpOthInTP-land.csv"), row.names = 1)
+#indf=read.csv(paste0("step03_assigned/outTables/", ngs, "-idc95-cellRanks-c2-clean-freq2-family-aquaticGroups.csv"), row.names = 1)
+
+#== view
 length(unique(indf[indf$rank == "Species", "taxon"])) #96
 length(unique(indf[indf$rank == "Genus", "taxon"])) #118
 length(unique(indf[indf$rank == "Family", "taxon"])) #68
-#
+
+#== select cols and aggregate
 subdf=indf[c("age", "taxid", "taxonReads", "taxon", "genus", "family", "rank")]
 # sum up to genus level
 ge=subdf[subdf$rank %in% c("Genus", "Species", "subgenus"), ]
@@ -70,16 +75,20 @@ title(paste0("Rare curve based on min rowSum: ", raremax, " for ", ecogroup))
 dev.off()
 
 # sequence
-basecount=seq(1500, 3500, 500)
+basecount=seq(1500, 3500, 100)
+#basecount=seq(100, 250, 50) # mammalian
+#basecount=seq(500, 2500, 100) # aquatic 
 for (i in basecount) {
   # check if higher base count have higher species coverage
   pdf(file = paste0("step03_assigned/02_rarefy/outFigures/",  ngs, "-", ecogroup, "_rarecurve_", i, ".pdf"))
-  rarecurve(df, step = 40, sample = i, col = "blue", cex = 0.8, label = T)
+  rarecurve(df, step = 40, sample = i, col = "blue", cex = 0.8, label = T) # step = 20 (default) for mammalian and aquatic due to fewer total reads
   title(paste0("Rare curve based on median rowSum: ", i, " for ", ecogroup))
   dev.off()
 }
 #== select a base count
 basecount=3000
+#basecount=150 # mammalian
+#basecount=2000 # aquatic
 
 #== rarefy
 # long to wide
@@ -251,7 +260,7 @@ n.occ <- colSums(df > 0)
 spp.want <- which(max.abb >= 1 & n.occ >= 5)
 df.want=df[, spp.want] # 69
 write.csv(df.want, paste0("step03_assigned/02_rarefy/outTables/", ngs, "-", ecogroup, "-N", nrepeats, "_", nsampleff, "-", opt, ".csv"))
-#== rarefaction end / the same procedures were done for terrestrial mammals and aquatic ecosystem == 
+#== rarefaction end == 
 
 #== PCA analysis only for terrestrial plants (Fig. 2 J)
 pca=rda(sqrt(sqrt(df.want)))
