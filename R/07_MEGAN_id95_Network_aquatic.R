@@ -108,11 +108,11 @@ part_cor_full=output_cgr$best_graph$part
 part_cor_positive=part_cor_full
 part_cor_positive[part_cor_positive<0]=0
 diag(part_cor_positive)=-1
-write.csv(inf, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph.csv"))
-write.csv(raw_cov, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-raw-cov.csv"))
-write.csv(inf_cov, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-cov.csv"))
-write.csv(part_cor_full, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-full-partial-cov.csv"))
-write.csv(part_cor_positive, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-positive-partial-cov.csv"))
+write.csv(inf, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph.csv"))
+write.csv(raw_cov, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-raw-cov.csv"))
+write.csv(inf_cov, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-cov.csv"))
+write.csv(part_cor_full, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-full-partial-cov.csv"))
+write.csv(part_cor_positive, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-positive-partial-cov.csv"))
 # graph
 g=graph_from_adjacency_matrix(as.matrix(part_cor_positive), mode = "undirected", weighted = TRUE, diag = FALSE)
 isolated.nodes = which(degree(g)==0)
@@ -122,7 +122,7 @@ plot(g2)
 #weights
 weights=get.data.frame(g2)
 weights$model=mi
-write.csv(weights, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-weights-model-", mi, "-occ-", occurrence, "-sumC-", total_count, "-positive.csv"))
+write.csv(weights, paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-weights-model-", mi, "-occ-", occurrence, "-sumC-", total_count, "-positive.csv"))
 
 #== find optimal 3 modules with max. repetitions (-> optimal 3 modules should be robust)
 res=seq(0, 1, 0.01)
@@ -154,9 +154,9 @@ for (resi in res) {
 }
 #== index calculation
 # load data: partial cor.
-part_cor_full=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-full-partial-cov.csv"),
+part_cor_full=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-full-partial-cov.csv"),
                        row.names = 1)
-part_cor_positive=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-positive-partial-cov.csv"),
+part_cor_positive=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-cgr-best-graph-positive-partial-cov.csv"),
                            row.names = 1)
 # graph with partial full links
 g_full=graph_from_adjacency_matrix(as.matrix(part_cor_full), mode = "undirected", weighted = TRUE, diag = FALSE)
@@ -222,15 +222,15 @@ for (i in 1:max(cluster$memberships)) {
 }
 #== save
 taxacluster=taxacluster[order(-taxacluster$`cluster_sub$memberships`, -taxacluster$hs_cluster), ]
-write.csv(metacluster, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-FaGeSpOthTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-metacluster3-res", resi, "-deg.csv"))
-write.csv(taxacluster, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-FaGeSpOthTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-taxacluster3-res", resi, "-deg.csv"))
+write.csv(metacluster, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-metacluster3-res", resi, "-deg.csv"))
+write.csv(taxacluster, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-taxacluster3-res", resi, "-deg.csv"))
 # keystone species
 keystone_sp=taxacluster[taxacluster$hs_cluster >= 0.8, ]
-write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-FaGeSpTP-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone3-res", resi, ".csv"))
+write.csv(keystone_sp, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi, "-occ-", occurrence, "-sumC-", total_count,"-keystone3-res", resi, ".csv"))
 
 #== cluster and igraph
 # for each eco group
-raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
+raw_igraph=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-fiter-TP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 raw_igraph=raw_igraph[!(raw_igraph$ecogroup %in% c("Terrestrial_Plants", "Terrestrial_Mammals")), ]
 raw_igraph=raw_igraph[c("taxa", "ecogroup")]
 names(raw_igraph)=c("nodes", "group")
@@ -247,7 +247,7 @@ for (i in unique(module_class$memberships)) {
   }
 }
 #
-weights=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-weights-model-", mi, "-occ-", occurrence, "-sumC-", total_count, "-positive.csv"),
+weights=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/mod1-", ngs, "-", econame, "Network-hops-fiter-TP-FW-weights-model-", mi, "-occ-", occurrence, "-sumC-", total_count, "-positive.csv"),
                  row.names = 1)
 names(weights)=c("from_nodes", "to_nodes", "weight", "model")
 names(module)=c("from_nodes", "from_community")
@@ -256,12 +256,12 @@ names(module)=c("to_nodes", "to_community")
 weights_module=left_join(weights_module, module, by = "to_nodes")
 #
 weights_module$modules=ifelse(weights_module$from_community == weights_module$to_community, "within", "between")
-write.csv(weights_module, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-model", mi,"-occ-", occurrence, "-sumC-", total_count, "-weights_module3-res", resi,".csv"))
+write.csv(weights_module, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi,"-occ-", occurrence, "-sumC-", total_count, "-weights_module3-res", resi,".csv"))
 #
 weights_module$from_to_module=paste0(weights_module$from_community, "-", weights_module$to_community)
 #
 within=weights_module[weights_module$modules == "within", ]
-write.csv(within, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-model", mi,"-occ-", occurrence, "-sumC-", total_count, "-within3-res", resi,".csv"))
+write.csv(within, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi,"-occ-", occurrence, "-sumC-", total_count, "-within3-res", resi,".csv"))
 #
 within_df=as.data.frame(table(within$from_to_module))
 #
@@ -283,13 +283,13 @@ for (i in unique(module_class$memberships)) {
   }
 }
 finaltable=cbind(module_group, edges_percent_df)
-write.csv(finaltable, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-model", mi,"-occ-", occurrence, "-sumC-", total_count, "-edges_percent3-res", resi,".csv"))
+write.csv(finaltable, paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-", econame, "Network-hops-fiter-TP-FW-model", mi,"-occ-", occurrence, "-sumC-", total_count, "-edges_percent3-res", resi,".csv"))
 #== network analysis end ==
 
 
 #== plotting modules in Fig. 3G
 # ecogroup
-ecogroup=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-FaGeSpOthInTP-FW-taxa-to-ecogroup.csv"), row.names = 1)
+ecogroup=read.csv(paste0("step03_assigned/outTables/", ngs, "-hops-fiter-TP-FW-taxa-to-ecogroup.csv"), row.names = 1)
 # data
 df1=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-AquaticGroups-N100_2000-p1f5.csv"), row.names = 1)
 library(circlize)
@@ -310,7 +310,7 @@ pre_tx=pre_tx[-5]
 post_tx=df1[df1$pre14_post14<0 & df1$ecogroup == "Aquatic_Bacteria", "taxa"]
 post_tx
 #
-within=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-aquaticNetwork-hops-fiter-TP-modelage_mass-occ-rp1_f5_assigned_rare2000-sumC-samp1500-within3-res0.62.csv"), row.names = 1)
+within=read.csv(paste0("step03_assigned/04_network/outTables_aquatic/", ngs, "-aquaticNetwork-hops-fiter-TP-FW-modelage_mass-occ-rp1_f5_assigned_rare2000-sumC-samp1500-within3-res0.62.csv"), row.names = 1)
 #== moduels 1, 2, and 3
 mi="1-1"
 chord=within[within$from_to_module==mi, c("from_nodes", "to_nodes", "weight")]
