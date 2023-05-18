@@ -20,7 +20,7 @@ dir.create("step03_assigned/01_damage/outFigures")
 #== ngs id
 ngs="APMG-5-10-28-34-35"
 
-#== sample list
+#== sample list (infor. in Table S6)
 sampleid=read.csv(paste0("NC-sampleList-NGS.csv"), stringsAsFactors = F, row.names = 1)
 names(sampleid)
 names(sampleid)=c("fasteris", "sample","sampleR", "age", "ex", "lib")
