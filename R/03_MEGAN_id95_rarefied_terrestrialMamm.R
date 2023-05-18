@@ -11,7 +11,7 @@ dir.create("step03_assigned/02_rarefy/outFigures")
 
 #== setting
 ngs="APMG-5-10-28-34-35"
-ecogroup="TerrestrialMamm"
+ecogroup="TerrestrialMamm" # same procedures for other ecogroup
 
 #= load data
 indf=read.csv(paste0("step03_assigned/outTables/", ngs, "-idc95-cellRanks-c2-clean-freq2-family-MammaliaExHominidae-FaGeSpOthInTP-land.csv"), row.names = 1)
