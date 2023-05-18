@@ -110,7 +110,7 @@ for (i in 3:dim(stack_paleo_df)[2]) {
   paleo_glm=predict.glm(m_glm, sub_ka, type="response", se.fit = T)
   #
   df_paleo_glm=data.frame(mean=paleo_glm$fit, CI95=paleo_glm$se.fit, ka_layer=ka_layer)
-  write.csv(df_paleo_glm, paste0("~/predict/", ka_layer, ".csv"))
+  write.csv(df_paleo_glm, paste0("predict/", ka_layer, ".csv"))
   #
   fit_mean=as.data.frame(df_paleo_glm[, 1])
   names(fit_mean)=paste0("glm_permafrost.", ka_layer)
@@ -121,7 +121,7 @@ meta_paleo_glm_mean=stack_paleo_df[c("x", "y")] # x and y are coordinates of gri
 for (i in 1:dim(paleo_temp)[1]) {
   print(i)
   ka_layer=paste0("yearBP_", paleo_temp[i, 1])
-  df_paleo_glm=read.csv(paste0("~/Documents/workAddition/DP4/permafrost_glm_v2_add/", ka_layer, ".csv"), row.names = 1)
+  df_paleo_glm=read.csv(paste0("predict/", ka_layer, ".csv"), row.names = 1)
   fit_mean=as.data.frame(df_paleo_glm[, 1])
   names(fit_mean)=paste0("glm_permafrost.", ka_layer)
   meta_paleo_glm_mean=cbind(meta_paleo_glm_mean, fit_mean)
@@ -141,14 +141,15 @@ crs(stack_paleo_perma)="+proj=aea +lat_0=30 +lon_0=95 +lat_1=15 +lat_2=65 +x_0=0
 
 #== load Paleo_permafrost_glm
 stack_paleo_perma_30m_glm=stack("stack_paleo_perma_30m_glm_22-0ka.tif")
+
 #== name layers 
 years=seq(0, 22000, 500)
-# change name to years and reverse stack
 for (i in 1:45) {
   print(names(stack_paleo_perma_30m_glm)[i])
   names(stack_paleo_perma_30m_glm)[i] = paste0("year_", years[i])
   print(names(stack_paleo_perma_30m_glm)[i])
 }
+
 #== reverse layers 22-0 ka
 stack_perma_rev=stack_paleo_perma_30m_glm[[45]]
 for (i in 44:1) {
@@ -157,6 +158,7 @@ for (i in 44:1) {
 }
 names(stack_perma_rev)
 #plot(stack_perma_rev)
+
 #== prepare 0 ka and present-day
 # 0 ka
 ka0=stack_perma_rev[[45]]
@@ -169,6 +171,7 @@ modern=nalengdem_permafrost_map_30m
 ka0_modern=stack(list(modern, ka0))
 ka0_modern_df=as.data.frame(ka0_modern, xy=TRUE)
 ka0_modern_df=ka0_modern_df[complete.cases(ka0_modern_df), ]
+
 #== y~x
 vslm=lm(year_0~permafrost_dem_aea_WGS84, ka0_modern_df)
 anova(vslm)
