@@ -21,9 +21,9 @@ library(ggplot2)
 # envi data
 envi=read.csv(paste0("step03_assigned/03_rda/", econame,"_envi.csv"))
 names(envi)
-envi=envi[c("temperature", "glaciers_area_approx", "Permafrost_catchment_approx", "herbivory", "kramer2010")]
+envi=envi[c("temperature", "glaciers_area_approx", "Permafrost_catchment_approx", "herbivory", "land_use")]
 yak.sqrt2=sqrt(sqrt(envi["herbivory"]))
-human.sqrt2=sqrt(sqrt(envi["kramer2010"]))
+human.sqrt2=sqrt(sqrt(envi["land_use"]))
 envi=cbind(envi[1:3], yak.sqrt2, human.sqrt2)
 # plants
 spe=read.csv(paste0("step03_assigned/02_rarefy/outTables/", ngs, "-TerrestrialPlants-N100_3000-p1f5.csv"), row.names = 1)
@@ -60,8 +60,8 @@ envi.cca=cca(sel.spe~., envi[, -1])
 vif_df=vif.cca(envi.cca)
 write.csv(vif_df, paste0("step03_assigned/03_rda/outTables/vif-", ngs, "-", econame, "-", ecogroup, "-r2.csv"))
 #== rda using envi factors with vif < 3
-envi.sig=envi[, c("glaciers_area_approx", "Permafrost_catchment_approx", "herbivory", "kramer2010")]
-nams <- list(c("glaciers_area_approx", "Permafrost_catchment_approx"), "herbivory", "kramer2010")
+envi.sig=envi[, c("glaciers_area_approx", "Permafrost_catchment_approx", "herbivory", "land_use")]
+nams <- list(c("glaciers_area_approx", "Permafrost_catchment_approx"), "herbivory", "land_use")
 
 # Single variance
 meta.single.var=NULL
