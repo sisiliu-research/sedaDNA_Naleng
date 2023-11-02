@@ -30,7 +30,8 @@ srun fastp --in1 ${OUTDIR}/${OUT_DEDUP}/${OUT_R1_CL} --in2 ${OUTDIR}/${OUT_DEDUP
 srun fastqc -q -o ${OUTDIR}/${OUT_FQC}/${POST} -t 3 ${OUTDIR}/${OUT_FASTP}/${OUT_R1} ${OUTDIR}/${OUT_FASTP}/${OUT_R2} ${OUTDIR}/${OUT_FASTP}/${OUT_MERGED}
 
 ```
-5. Taxonomic classification 
+5. Taxonomic classification
+    
 5.1. Refseq database establishment: [script source](https://github.com/miwipe/KapCopenhagen)
   
 5.2. End-to-end alignment using [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml): 
