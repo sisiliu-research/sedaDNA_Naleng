@@ -47,6 +47,7 @@ rm ${FILEBASE}.$(basename $DB).sam
 5.3 Merge all bam files, convert to *.sam.gz file, and sorting: [script source](https://github.com/miwipe/KapCopenhagen)
 
 5.4. Taxonomic classification using [ngsLCA](https://github.com/miwipe/ngsLCA) : [Wang et al., 2022](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14006)
+```
 #==taxonomy
 NAMES="/PARENT/naleng/T2023_08_db/taxonomy/names.dmp"
 NODES="/PARENT/naleng/T2023_08_db/taxonomy/nodes.dmp"
@@ -54,7 +55,7 @@ ACC="/PARENT/naleng/T2023_08_db/taxonomy/nucl.accession2taxid.gz"
 
 #== classification
 srun ngsLCA -simscorelow 0.95 -simscorehigh 1.0 -names ${NAMES} -nodes ${NODES} -acc2tax ${ACC} -bam ${WORKFOLDER}/${FILEBASE}_L30.sorted.sam.gz -outnames ${WORKFOLDER}/${FILEBASE}.L30.ss095to1
-
+```
 Other parameters are not modified.
 
 ## Ancient DNA (aDNA) damage pattern analysis (Fig. S3 and Fig. S4)
