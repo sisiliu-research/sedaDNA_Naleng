@@ -1,7 +1,7 @@
 # sedaDNA analysis of Lake Naleng on the Tibetan plateau
 This repository contains source codes used to analysis shotgun sequencing/metagenomic data of Liu et al., 2023. [Tibetan terrestrial and aquatic ecosystems collapsed with cryosphere loss inferred from sedimentary ancient metagenomics] 
 
-The codes for bioinformatics are done by Lars Harms (lars.harms@awi.de) and modified by Sisi Liu (sisi.liu@awi.de/sisi.liu.research@gmail.com). Other scripts are done by Sisi Liu.
+The codes for bioinformatics are done by Sisi Liu (sisi.liu@awi.de/sisi.liu.research@gmail.com) and Lars Harms (lars.harms@awi.de). Other scripts are done by Sisi Liu.
 
 ## Bioinformatic analysis
 
