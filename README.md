@@ -34,6 +34,7 @@ srun fastqc -q -o ${OUTDIR}/${OUT_FQC}/${POST} -t 3 ${OUTDIR}/${OUT_FASTP}/${OUT
 5.1. Refseq database establishment: [script source](https://github.com/miwipe/KapCopenhagen)
   
 5.2. End-to-end alignment using [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml): 
+```
 #== alignment against archaea, fungi, viral refseq (same settings for other indexed refseq DBs)
 DB="/PARENT/naleng/bowtie2db/afv/afv"
 srun bowtie2 --threads ${CPU} -k 1000 -x $DB -U ${INDIR}/${OUT_MERGED} --no-unal -S ${OUTDIR}/${OUT_ALIGN}/${FILEBASE}/${FILEBASE}.$(basename $DB).sam
@@ -41,7 +42,7 @@ srun bowtie2 --threads ${CPU} -k 1000 -x $DB -U ${INDIR}/${OUT_MERGED} --no-unal
 cd ${OUTDIR}/${OUT_ALIGN}/${FILEBASE}
 srun samtools view -bS ${FILEBASE}.$(basename $DB).sam > ${FILEBASE}.$(basename $DB).bam
 rm ${FILEBASE}.$(basename $DB).sam
-
+```
 5.3 Merge all bam files, convert to *.sam.gz file, and sorting: [script source](https://github.com/miwipe/KapCopenhagen)
 
 5.4. Taxonomic classification using [ngsLCA](https://github.com/miwipe/ngsLCA) : [Wang et al., 2022](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14006)
