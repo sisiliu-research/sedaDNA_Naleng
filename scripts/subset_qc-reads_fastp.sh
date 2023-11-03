@@ -6,11 +6,11 @@
 #SBATCH --account=
 #SBATCH --job-name=
 #SBATCH --partition=
-#SBATCH -t 00:00:00
-#SBATCH --qos=
-#SBATCH --array=
-#SBATCH --cpus-per-task=
-#SBATCH --mem=
+#SBATCH -t 00:30:00
+#SBATCH --qos=30min
+#SBATCH --array=1-56%15
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=1
 #SBATCH --mail-type=
 #SBATCH --mail-user=
 
