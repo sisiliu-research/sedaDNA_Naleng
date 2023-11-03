@@ -12,7 +12,7 @@
 #SBATCH --qos=12h
 #SBATCH --array=1-26%10
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=50
+#SBATCH --mem=50G
 #SBATCH --mail-type=
 #SBATCH --mail-user=
 
