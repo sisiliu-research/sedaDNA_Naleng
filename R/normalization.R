@@ -11,7 +11,7 @@ library(DEP)
 library(ggplot2)
 
 #==== Working path and folders ====
-setwd("~/04_NLshotgun/bowtie2")
+#setwd("")
 # generate or reproduce?
 reproduce="FALSE"
 if (reproduce) {
