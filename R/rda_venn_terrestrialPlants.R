@@ -25,13 +25,13 @@ dir.create("11_ngsLCA_L30_post/04_rda/00Figures")
 
 #==== Working NGS ====
 ngs="APMG-5-10-28-34-35"
-orgs="plant"
+orgs="PLANT"
 neta=2450 # determined by network analysis
 eco="terrestrial"
 trans="rlog"
 
 #==== Load envi data, Source: sheet = ENVI in Dataset 1 ====
-envi=read.csv(paste0("11_ngsLCA_L30_post/04_rda/", eco,"_envi_", trans, ".csv"), row.names = 1)[c("Temperature", "Glaciers_area", "Permafrost_catchment", "Herbivory", "Land_use")]
+envi=read.csv(paste0("11_ngsLCA_L30_post/04_rda/ENVI.csv"), row.names = 1)[c("Temperature", "Glaciers_area", "Permafrost_catchment", "Herbivory", "Land_use")]
 
 # Standardize quantitative environmental data (non-centerd data with different unit dimensions should be standardized)
 envi$Temperature <- decostand(envi$Temperature, method = "standardize")
