@@ -102,9 +102,9 @@ srun mapDamage -i ${DBi}/${FILEBASE}.sort.bam -r ${DBi}/${DB}.fasta --rescale --
 ```
 ## Normolization prior to Redundancy Analysis (RDA)
 
-Script: [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R). \n
+Script: [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R).
 
-The key functions are rlog and varianceStabilizingTransformation from [DESeq2 package](https://bioconductor.org/packages/release/bioc/html/DESeq2.html). 
+The key functions are rlog and varianceStabilizingTransformation from the [DESeq2 package](https://bioconductor.org/packages/release/bioc/html/DESeq2.html). 
 
 Citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)
 
@@ -115,7 +115,9 @@ Citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/1
 2. Aquatic communities: [rda_venn_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_aquatic.R)
 
 ## Network analysis (Fig. 2 L and Fig. 3 G)
-Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). It is detailed explained by [Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
+Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). 
+
+Citations:[Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
 
 0. network analysis for terrestrial ecosystem: [network_terrestrial.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_terrestrial.R)
 1. network analysis for aquatic ecosystem: [network_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_aquatic.R)
