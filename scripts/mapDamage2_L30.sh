@@ -6,13 +6,13 @@
 #================== HPC setting: user dependent ==============
 
 #SBATCH --account=
-#SBATCH --job-name=
+#SBATCH --job-name=nld
 #SBATCH --partition=
-#SBATCH -t 00:00:00
-#SBATCH --qos=
-#SBATCH --array=
-#SBATCH --cpus-per-task=
-#SBATCH --mem=
+#SBATCH -t 12:00:00
+#SBATCH --qos=12h
+#SBATCH --array=1-26%10
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=50
 #SBATCH --mail-type=
 #SBATCH --mail-user=
 
