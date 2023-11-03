@@ -118,12 +118,14 @@ Citation: Chapter 11 Canonical analysis, Legendre, P., and Legendre, L. (2012). 
 eBook ISBN: 9780444538697
 
 ## Network analysis (Fig. 2 L and Fig. 3 G)
+
+0. network analysis for terrestrial ecosystem: [network_terrestrial.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_terrestrial.R)
+1. network analysis for aquatic ecosystem: [network_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_aquatic.R)
+
 Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). 
 
 Citations:[Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
 
-0. network analysis for terrestrial ecosystem: [network_terrestrial.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_terrestrial.R)
-1. network analysis for aquatic ecosystem: [network_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_aquatic.R)
 
 ## Past permafrost simulation (Fig. 1 B and Fig. S1)
 0. Download the source data: [palaeo proxies-based temperature](https://github.com/StefanKruse/R_PastElevationChange), [BIO1](https://www.worldclim.org/data/worldclim21.html), [present-day permafrost distribution in the Tibetan Plateau](https://tc.copernicus.org/articles/11/2527/2017/), and [SRTM 30 m digital elevation data with SRTM-Downloader plugin in the QGIS software](https://qgis.org/de/site/). 
