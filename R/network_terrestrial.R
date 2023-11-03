@@ -24,6 +24,7 @@ dir.create("11_ngsLCA_L30_post/03_offset/00Tables")
 dir.create("11_ngsLCA_L30_post/03_offset/00Figures")
 
 #==== load ngs, Source: Dataset 1 ====
+eco="terrestrial"
 indf0=read.csv(paste0("11_ngsLCA_L30_post/00_data/Tables/RAW_COUNT_PLANT.csv"), check.names = F, row.names = 2)
 indf1=read.csv(paste0("11_ngsLCA_L30_post/00_data/Tables/RAW_COUNT_MAM.csv"), check.names = F, row.names = 2)
 indf=rbind(indf0, indf1)
@@ -32,8 +33,7 @@ indf=rbind(indf0, indf1)
 rdf=as.data.frame(t(indf[-c(1, 2)]))
 
 #==== load envi data, Source: sheet = ENVI in Dataset 1  ====
-eco="terrestrial"
-envi=read.csv(paste0("11_ngsLCA_L30_post/04_rda/ENVI_", eco, ".csv"), row.names = 1)[c("Glaciers_area", "Permafrost_catchment", "Land_use")]
+envi=read.csv(paste0("11_ngsLCA_L30_post/04_rda/ENVI.csv"), row.names = 1)[c("Glaciers_area", "Permafrost_catchment", "Land_use")]
 rownames(envi)=rownames(rdf)
 
 # find size factor
