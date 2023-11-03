@@ -46,7 +46,9 @@ rm ${FILEBASE}.$(basename $DB).sam
 ```
 5.3 Merge all bam files, convert to *.sam.gz file, and sorting: [script source](https://github.com/miwipe/KapCopenhagen)
 
-5.4. Taxonomic classification using [ngsLCA](https://github.com/miwipe/ngsLCA) : [Wang et al., 2022](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14006)
+5.4. Taxonomic classification
+Tool is [ngsLCA](https://github.com/miwipe/ngsLCA).
+Citation: [Wang et al., 2022](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14006)
 ```
 #==taxonomy
 NAMES="/PARENT/naleng/T2023_08_db/taxonomy/names.dmp"
@@ -96,7 +98,11 @@ srun samtools faidx ${FILEBASE}.fna
 ```
 srun mapDamage -i ${DBi}/${FILEBASE}.sort.bam -r ${DBi}/${DB}.fasta --rescale --single-stranded --rescale-out=${DBi}/${FILEBASE}.rescale.bam -d ${DBi}/${FILEBASE}
 ```
-## Normolization using [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R) prior to RDA. The key functions are rlog and varianceStabilizingTransformation from [DESeq2 package](https://bioconductor.org/packages/release/bioc/html/DESeq2.html). citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)
+## Normolization prior to Redundancy Analysis (RDA)
+
+script: [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R). 
+The key functions are rlog and varianceStabilizingTransformation from [DESeq2 package](https://bioconductor.org/packages/release/bioc/html/DESeq2.html). 
+Citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)
 
 
 ## Redundancy Analysis (RDA) and variance partitioning analysis (Fig. 2 K and Fig. 3 E-F)
