@@ -33,7 +33,7 @@ rdf=as.data.frame(t(indf[-c(1, 2)]))
 
 #==== load envi data, Source: sheet = ENVI in Dataset 1  ====
 eco="terrestrial"
-envi=read.csv(paste0("11_ngsLCA_L30_post/04_rda/ENVI", eco, ".csv"), row.names = 1)[c("Glaciers_area", "Permafrost_catchment", "Land_use")]
+envi=read.csv(paste0("11_ngsLCA_L30_post/04_rda/ENVI_", eco, ".csv"), row.names = 1)[c("Glaciers_area", "Permafrost_catchment", "Land_use")]
 rownames(envi)=rownames(rdf)
 
 # find size factor
