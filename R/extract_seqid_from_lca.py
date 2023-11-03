@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# contact: sisi.liu@awi.de
+# contact: sisi.liu@awi.de; sisi.liu.research@gmail.com
 
 import os
 
