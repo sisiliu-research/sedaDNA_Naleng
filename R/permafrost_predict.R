@@ -1,4 +1,4 @@
-# by Sisi Liu: Sisi Liu: sisi.liu@awi.de | sisi.liu.research@gmail.com (permanent address)
+# by Sisi Liu: sisi.liu@awi.de | sisi.liu.research@gmail.com (permanent address)
 # R version 4.2.2 (2022-10-31)
 # Platform: aarch64-apple-darwin20 (64-bit)
 # Running under: macOS Ventura 13.1
