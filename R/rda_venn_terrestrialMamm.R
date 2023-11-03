@@ -23,7 +23,7 @@ dir.create("11_ngsLCA_L30_post/04_rda/01Figures")
 
 #==== Working NGS ====
 ngs="APMG-5-10-28-34-35"
-orgs="mam"
+orgs="MAM"
 neta=2450 # determined by network analysis
 eco="terrestrial"
 trans="rlog"
