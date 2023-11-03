@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# contact: sisi.liu@awi.de
+# contact: sisi.liu@awi.de; sisi.liu.research@gmail.com
 #
 # slurm options and variables under >set required variables< 
 #================== HPC setting: user dependent ==============
