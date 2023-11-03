@@ -114,6 +114,9 @@ Citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/1
 1. Terrestrial mammalian: [rda_venn_terrestrialMamm.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_terrestrialMamm.R)
 2. Aquatic communities: [rda_venn_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_aquatic.R)
 
+Citation: Chapter 11 Canonical analysis, Legendre, P., and Legendre, L. (2012). Numerical ecology. Third English edition. Amsterdam: Elsevier. Paperback ISBN: 9780444538680
+eBook ISBN: 9780444538697
+
 ## Network analysis (Fig. 2 L and Fig. 3 G)
 Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). 
 
