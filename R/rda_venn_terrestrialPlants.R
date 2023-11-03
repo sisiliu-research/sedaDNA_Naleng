@@ -60,8 +60,7 @@ if(!(trans %in% c("rlog", "rclr", "vst"))) {
   decorana(pov_cols)
 }
 
-#==== Find sig. envi ==== 
-#check explained % for each predictor
+#==== Check explained % for each predictor ====
 nams <- names(envi)
 # Single variance
 meta.single.var=NULL
