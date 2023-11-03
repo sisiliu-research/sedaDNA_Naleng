@@ -88,33 +88,33 @@ srun bwa index -a bwtsw ${FILEBASE}.fna
 srun samtools faidx ${FILEBASE}.fna
 #== END
 ```
-3. Extract classified read IDs from output of ngsLCA/*.lca using [extract_seqid.py] and merge them into single txt file using [seqid_merge.R]
+3. Extract classified read IDs from output of ngsLCA/*.lca using [extract_seqid_from_lca.py](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/extract_seqid_from_lca.py) and merge them into single txt file using [seqid_merge.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/seqid_merge.R)
 
-4. Subset the QC fastq files: [subset_qc-reads_fastp.sh]
+4. Subset the QC fastq files: [subset_qc-reads_fastp.sh](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/subset_qc-reads_fastp.sh)
 
-5. mapDamage: [mapDamage2_L30.sh]
+5. mapDamage: [mapDamage2_L30.sh](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/mapDamage2_L30.sh)
 ```
 srun mapDamage -i ${DBi}/${FILEBASE}.sort.bam -r ${DBi}/${DB}.fasta --rescale --single-stranded --rescale-out=${DBi}/${FILEBASE}.rescale.bam -d ${DBi}/${FILEBASE}
 ```
-## Normolization using [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) 
+## Normolization using [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R) prior to RDA. The key functions are rlog and varianceStabilizingTransformation from [DESeq2 package](https://bioconductor.org/packages/release/bioc/html/DESeq2.html). citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)
 
 
-## Ordination analysis (Fig. 2 K and Fig. 3 E-F)
-0. Redundancy Analysis (RDA) and variance partitioning analysis for terrestrial vegetation: [ngsLCA_id95_rda_venn_terrestrialPlants.R]
-1. Redundancy Analysis (RDA) and variance partitioning analysis for terrestrial mammalian: [ngsLCA_id95_rda_venn_terrestrialMamm.R]
-2. Redundancy Analysis (RDA) and variance partitioning analysis for aquatic communities: [ngsLCA_id95_rda_venn_aquatic.R]
+## Redundancy Analysis (RDA) and variance partitioning analysis (Fig. 2 K and Fig. 3 E-F)
+0. Terrestrial vegetation: [rda_venn_terrestrialPlants.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_terrestrialPlants.R)
+1. Terrestrial mammalian: [rda_venn_terrestrialMamm.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_terrestrialMamm.R)
+2. Aquatic communities: [rda_venn_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_aquatic.R)
 
 ## Network analysis (Fig. 2 L and Fig. 3 G)
 Tool is ecoCopula (https://github.com/gordy2x/ecoCopula). It is detailed explained by [Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
 
-0. network analysis for terrestrial ecosystem: [ngsLCA_id95_network_terrestrial.R]
-1. network analysis for aquatic ecosystem: [ngsLCA_id95_network_aquatic.R]
+0. network analysis for terrestrial ecosystem: [network_terrestrial.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_terrestrial.R)
+1. network analysis for aquatic ecosystem: [network_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_aquatic.R)
 
 ## Past permafrost simulation (Fig. 1 B and Fig. S1)
 0. Download the source data: [palaeo proxies-based temperature](https://github.com/StefanKruse/R_PastElevationChange), [BIO1](https://www.worldclim.org/data/worldclim21.html), [present-day permafrost distribution in the Tibetan Plateau](https://tc.copernicus.org/articles/11/2527/2017/), and [SRTM 30 m digital elevation data with SRTM-Downloader plugin in the QGIS software](https://qgis.org/de/site/). 
 1. Merging SRTM raster files in the [QGIS software](https://qgis.org/de/site/): Raster > Miscellaneous > Merge
-2. Prepare the raster files for permafrost simulation using r-script: [08_prepare_raster_files.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/R/08_prepare_raster_files.R).
-3. Permafrost simulation using r-script: [09_permafrost_predict.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/R/09_permafrost_predict.R)
+2. Prepare the raster files for permafrost simulation using r-script: [prepare_raster_files.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/prepare_raster_files.R).
+3. Permafrost simulation using r-script: [permafrost_predict.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/permafrost_predict.R)
 
 
 
