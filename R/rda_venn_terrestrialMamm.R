@@ -38,7 +38,7 @@ envi$Permafrost_catchment <- decostand(envi$Permafrost_catchment, method = "stan
 envi$PC1 <- decostand(envi$PC1, method = "standardize")
 envi$Land_use <- decostand(envi$Land_use, method = "standardize")
 
-#==== Load NGS data ====
+#==== Load rlog-count NGS data ====
 if (is.null(neta)) {
   t.spe=read.csv(paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/01_", orgs, "_", trans, ".csv"), row.names = 1)
 } else {
