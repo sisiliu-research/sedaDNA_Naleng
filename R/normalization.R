@@ -18,8 +18,8 @@ if (reproduce) {
   load("11_ngsLCA_L30_post/02_nomolize/nomolizeEnvi.Rdata")
 } else {
   dir.create("11_ngsLCA_L30_post/02_nomolize")
-  dir.create("11_ngsLCA_L30_post/02_nomolize/01Tables")
-  dir.create("11_ngsLCA_L30_post/02_nomolize/01Figures")
+  dir.create("11_ngsLCA_L30_post/02_nomolize/00Tables")
+  dir.create("11_ngsLCA_L30_post/02_nomolize/00Figures")
 }
 
 #==== Which NGS data ====
@@ -52,7 +52,7 @@ if(TRUE) {
   # the name varies in fields, e.g., profile transformation in Ecology, TSS in Biology
   spe.prop=as.data.frame(prop.table(as.matrix(spe), margin = 2)*100)
   colSums(spe.prop)
-  #write.csv(spe.prop, paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/01_", orgs,"-prop.csv"))
+  #write.csv(spe.prop, paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/01_", orgs,"-prop.csv"))
   
   #==== Mean-variance relationship ====
   countData <- as.matrix(spe)
@@ -61,21 +61,21 @@ if(TRUE) {
   #
   trans="raw"
   meanSdPlot(dds)
-  #ggsave(file = paste0("11_ngsLCA_L30_post/02_nomolize/01Figures/", orgs, "_", trans, "_meanvar_DEP.pdf"), width = 4, height = 3)
+  #ggsave(file = paste0("11_ngsLCA_L30_post/02_nomolize/00Figures/", orgs, "_", trans, "_meanvar_DEP.pdf"), width = 4, height = 3)
   #
   trans="vst"
   vsd=varianceStabilizingTransformation(dds, blind = TRUE, fitType = "parametric")
   meanSdPlot(vsd)
-  #ggsave(file = paste0("11_ngsLCA_L30_post/02_nomolize/01Figures/", orgs, "_", trans, "_meanvar_DEP.pdf"), width = 4, height = 3)
+  #ggsave(file = paste0("11_ngsLCA_L30_post/02_nomolize/00Figures/", orgs, "_", trans, "_meanvar_DEP.pdf"), width = 4, height = 3)
   #
   trans="rlog"
   rld=rlog(dds)
   meanSdPlot(rld)
-  #ggsave(file = paste0("11_ngsLCA_L30_post/02_nomolize/01Figures/", orgs, "_", trans, "_meanvar_DEP.pdf"), width = 4, height = 3)
+  #ggsave(file = paste0("11_ngsLCA_L30_post/02_nomolize/00Figures/", orgs, "_", trans, "_meanvar_DEP.pdf"), width = 4, height = 3)
   
   #==== save ====
-  #write.csv(t(assay(vsd)), paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/01_", orgs, "_vst.csv"))
-  #write.csv(t(assay(rld)), paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/01_", orgs, "_rlog.csv"))
+  #write.csv(t(assay(vsd)), paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/01_", orgs, "_vst.csv"))
+  #write.csv(t(assay(rld)), paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/01_", orgs, "_rlog.csv"))
   
   #==== PCA ====
   pca=rda(t(assay(rld)))
@@ -83,18 +83,18 @@ if(TRUE) {
   pca.scores.site=data.frame(scores(pca, choices=c(1,2))[["sites"]])
   # Get the percentage of variance explained by each PC
   pca_var_explained <- pca$CA$eig / sum(pca$CA$eig) * 100
-  #write.csv(pca.scores.site, paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/02_", orgs, "_rlog_PC12.csv"))
-  #write.csv(pca_var_explained, paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/03_", orgs, "_rlog_PCs_explained.csv"))
+  #write.csv(pca.scores.site, paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/02_", orgs, "_rlog_PC12.csv"))
+  #write.csv(pca_var_explained, paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/03_", orgs, "_rlog_PCs_explained.csv"))
   
   #=== Subset based on common taxa ====
   tmp=as.data.frame(t(spe))
   tax=colnames(tmp[, colSums(tmp) >= neta])
   tmp=t(spe.prop)
   tmp=tmp[, colnames(tmp) %in% tax]
-  #write.csv(tmp, paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/04_", orgs,"-", neta, "_prop.csv"))
+  #write.csv(tmp, paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/04_", orgs,"-", neta, "_prop.csv"))
   
   tmp=t(assay(rld))
   tmp=tmp[, colnames(tmp) %in% tax]
-  #write.csv(tmp, paste0("11_ngsLCA_L30_post/02_nomolize/01Tables/05_", orgs,"-", neta, "_rlog.csv"))
+  #write.csv(tmp, paste0("11_ngsLCA_L30_post/02_nomolize/00Tables/05_", orgs,"-", neta, "_rlog.csv"))
 }
 #==== END ====
