@@ -26,6 +26,7 @@ dir.create("11_ngsLCA_L30_post/04_rda/03Figures")
 #==== Working NGS ====
 ngs="APMG-5-10-28-34-35"
 orgs="aquatic"
+eco="aquatic"
 trans="rlog"
 neta=50 # determined by network analysis
 
