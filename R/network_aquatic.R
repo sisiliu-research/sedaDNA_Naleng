@@ -82,7 +82,7 @@ for (j in abun_seq) {
                    #lambda=0, # use lambda=0 for estimate time, normally < 5 min
                    method = "BIC", seed = 123, n.samp = 500, n.lambda = 100)
   
-  graph_mod3 = cgr(mod3, graph_mod4$all_graphs$lambda.opt, 
+  graph_mod3 = cgr(mod3, graph_mod2$all_graphs$lambda.opt, 
                    method = "BIC", seed = 123, n.samp = 500)
   
   #== can find 2 modules?
