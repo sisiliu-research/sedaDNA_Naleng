@@ -1,4 +1,4 @@
-# sedaDNA analysis of Lake Naleng on the Tibetan plateau
+# sedaDNA analysis of Lake Naleng on the Tibetan Plateau
 This repository contains source codes used to analysis shotgun sequencing/metagenomic data of Liu et al., 2023. [Tibetan terrestrial and aquatic ecosystems collapsed with cryosphere loss inferred from sedimentary ancient metagenomics] 
 
 The codes for bioinformatics are done by Sisi Liu (sisi.liu@awi.de/sisi.liu.research@gmail.com) and Lars Harms (lars.harms@awi.de). Other scripts are done by Sisi Liu.
@@ -65,6 +65,8 @@ Other parameters are not modified.
 ## Ancient DNA (aDNA) damage pattern analysis (Fig. S3 and Fig. S4)
 Tool is [mapDamage2](https://ginolhac.github.io/mapDamage/).
 
+Citation: [Jónsson et al., 2013](https://academic.oup.com/bioinformatics/article/29/13/1682/184965)
+
 1. Download the Refseq sequnces for 26 major taxa from NCBI
 2. Indexing Refseq
 ```
@@ -114,17 +116,17 @@ Citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/1
 1. Terrestrial mammalian: [rda_venn_terrestrialMamm.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_terrestrialMamm.R)
 2. Aquatic communities: [rda_venn_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_aquatic.R)
 
-Citation: Chapter 11 Canonical analysis, Legendre, P., and Legendre, L. (2012). Numerical ecology. Third English edition. Amsterdam: Elsevier. Paperback ISBN: 9780444538680
-eBook ISBN: 9780444538697
+Citation: [Chapter 11 Canonical analysis, Legendre, P., and Legendre, L. (2012). Numerical ecology. Third English edition. Amsterdam: Elsevier.](https://www.sciencedirect.com/science/article/abs/pii/B9780444538680500113)
 
 ## Network analysis (Fig. 2 L and Fig. 3 G)
 
 0. network analysis for terrestrial ecosystem: [network_terrestrial.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_terrestrial.R)
 1. network analysis for aquatic ecosystem: [network_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_aquatic.R)
 
-The key functions are stackedsdm, cord, and cgr from [ecoCopula package](https://github.com/gordy2x/ecoCopula). 
+The key functions are 'stackedsdm', 'cord', and 'cgr' from [ecoCopula package](https://github.com/gordy2x/ecoCopula). 
+The key dependency of 'stackedsdm' is 'manyglm' from [mvabund package](https://cran.r-project.org/web/packages/mvabund/index.html)
 
-Citations:[Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247)
+Citations:[Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247), [Wang et al., 2012](https://besjournals.onlinelibrary.wiley.com/doi/pdf/10.1111/j.2041-210X.2012.00190.x)
 
 
 ## Past permafrost simulation (Fig. 1 B and Fig. S1)
