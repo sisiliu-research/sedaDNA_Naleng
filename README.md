@@ -51,6 +51,16 @@ rm ${FILEBASE}.$(basename $DB).sam
 Tool is [ngsLCA](https://github.com/miwipe/ngsLCA).
 
 Citation: [Wang et al., 2022](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14006)
+
+
+```
+#Download accession identifiers to taxid files from NCBI:  nucl_gb.accession2taxid.gz and nucl_wgs.accession2taxid.gz[https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/]
+#== combine both acc2taxid after removing header of nucl_wgs.accession2taxid.gz
+zcat nucl_gb.accession2taxid.gz > nucl.accession2taxid.gz
+zcat nucl_wgs.accession2taxid.gz | tail -n +2 >> nucl.accession2taxid.gz
+
+```
+
 ```
 #==taxonomy
 NAMES="/PARENT/naleng/T2023_08_db/taxonomy/names.dmp"
@@ -61,6 +71,10 @@ ACC="/PARENT/naleng/T2023_08_db/taxonomy/nucl.accession2taxid.gz"
 srun ngsLCA -simscorelow 0.95 -simscorehigh 1.0 -names ${NAMES} -nodes ${NODES} -acc2tax ${ACC} -bam ${WORKFOLDER}/${FILEBASE}_L30.sorted.sam.gz -outnames ${WORKFOLDER}/${FILEBASE}.L30.ss095to1
 ```
 Other parameters are not modified.
+
+#== Attach taxonomy information, including 
+Taxonomy dump files: NCBI[https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/] 
+Function: left_join(by = "taxid")
 
 ## Ancient DNA (aDNA) damage pattern analysis (Fig. S3 and Fig. S4)
 Tool is [mapDamage2](https://ginolhac.github.io/mapDamage/).
