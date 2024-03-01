@@ -52,9 +52,8 @@ Tool is [ngsLCA](https://github.com/miwipe/ngsLCA).
 
 Citation: [Wang et al., 2022](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14006)
 
-
+Download accession identifiers to taxid files from NCBI: nucl_gb.accession2taxid.gz and nucl_wgs.accession2taxid.gz[https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/]
 ```
-#Download accession identifiers to taxid files from NCBI:  nucl_gb.accession2taxid.gz and nucl_wgs.accession2taxid.gz[https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/]
 #== combine both acc2taxid after removing header of nucl_wgs.accession2taxid.gz
 zcat nucl_gb.accession2taxid.gz > nucl.accession2taxid.gz
 zcat nucl_wgs.accession2taxid.gz | tail -n +2 >> nucl.accession2taxid.gz
