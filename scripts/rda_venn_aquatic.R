@@ -4,7 +4,7 @@
 # Running under: macOS Ventura 13.1
 
 #==== README ====
-# This script for rda and variation partitioning for terrestrial vegetation
+# This script for rda and variation partitioning for aquatic ecosystem
 
 # Please read: Legendre and Legendre, 2012, Numerical ecology | 11.1 Redundancy analysis (RDA) to understand:
 #     why species data (response variables) Y and exploratory data (envi data) X should be centred data?
