@@ -115,7 +115,7 @@ srun samtools faidx ${FILEBASE}.fna
 ```
 srun mapDamage -i ${DBi}/${FILEBASE}.sort.bam -r ${DBi}/${DB}.fasta --rescale --single-stranded --rescale-out=${DBi}/${FILEBASE}.rescale.bam -d ${DBi}/${FILEBASE}
 ```
-## Normolization prior to Principal component analysis (PCA) and Redundancy Analysis (RDA)
+## Normolization prior to Principal component analysis (PCA) and Redundancy analysis (RDA)
 
 Script: [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R).
 
@@ -124,14 +124,14 @@ The key functions are rlog and varianceStabilizingTransformation from the [DESeq
 Citation: [Love et al., 2014](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8)
 
 
-## Redundancy Analysis (RDA) and variance partitioning analysis (Fig. 2 K and Fig. 3 E-F)
+## Redundancy Analysis (RDA) and variance partitioning analysis (Fig. 2K and Fig. 3E-F)
 0. Terrestrial vegetation: [rda_venn_terrestrialPlants.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_terrestrialPlants.R)
 1. Terrestrial mammalian: [rda_venn_terrestrialMamm.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_terrestrialMamm.R)
 2. Aquatic communities: [rda_venn_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/rda_venn_aquatic.R)
 
 Citation: [Chapter 11 Canonical analysis, Legendre, P., and Legendre, L. (2012). Numerical ecology. Third English edition. Amsterdam: Elsevier.](https://www.sciencedirect.com/science/article/abs/pii/B9780444538680500113)
 
-## Network analysis (Fig. 2 L and Fig. 3 G)
+## Network analysis (Fig. 2L and Fig. 3G)
 
 0. network analysis for terrestrial ecosystem: [network_terrestrial.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_terrestrial.R)
 1. network analysis for aquatic ecosystem: [network_aquatic.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/network_aquatic.R)
@@ -142,7 +142,7 @@ The key dependency of 'stackedsdm' is 'manyglm' from [mvabund package](https://c
 Citations:[Popovic et al., 2018](https://www.sciencedirect.com/science/article/pii/S0047259X17307522?via%3Dihub) and [2019](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13247), [Wang et al., 2012](https://besjournals.onlinelibrary.wiley.com/doi/pdf/10.1111/j.2041-210X.2012.00190.x)
 
 
-## Past permafrost simulation (Fig. 1 B and Fig. S1)
+## Past permafrost simulation (Fig. 1B and Fig. S1)
 0. Download the source data: [palaeo proxies-based temperature](https://github.com/StefanKruse/R_PastElevationChange), [BIO1](https://www.worldclim.org/data/worldclim21.html), [present-day permafrost distribution in the Tibetan Plateau](https://tc.copernicus.org/articles/11/2527/2017/), and [SRTM 30 m digital elevation data with SRTM-Downloader plugin in the QGIS software](https://qgis.org/de/site/). 
 1. Merging SRTM raster files in the [QGIS software](https://qgis.org/de/site/): Raster > Miscellaneous > Merge
 2. Prepare the raster files for permafrost simulation using r-script: [prepare_raster_files.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/prepare_raster_files.R).
