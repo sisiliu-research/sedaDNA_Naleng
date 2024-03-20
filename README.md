@@ -115,7 +115,7 @@ srun samtools faidx ${FILEBASE}.fna
 ```
 srun mapDamage -i ${DBi}/${FILEBASE}.sort.bam -r ${DBi}/${DB}.fasta --rescale --single-stranded --rescale-out=${DBi}/${FILEBASE}.rescale.bam -d ${DBi}/${FILEBASE}
 ```
-## Normolization prior to Redundancy Analysis (RDA)
+## Normolization prior to Principal component analysis (PCA) and Redundancy Analysis (RDA)
 
 Script: [normalization.R](https://github.com/sisiliu-research/sedaDNA_Naleng/blob/master/scripts/normalization.R).
 
